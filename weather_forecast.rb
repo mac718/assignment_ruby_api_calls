@@ -17,12 +17,12 @@ class WeatherForecast
   end
 
   def display_hi_temps
-    puts "Daliy high temperatures for the next #{@number_of_days} days"
+    puts "Daliy high temperatures for the next #{number_of_days} days"
     hi_temps.each_with_index { |temp, index| puts "#{dates[index]}: #{temp}" }
   end
 
   def display_lo_temps
-    puts "Daliy low temperatures for the next #{@number_of_days} days"
+    puts "Daliy low temperatures for the next #{number_of_days} days"
     lo_temps.each_with_index { |temp, index| puts "#{dates[index]}: #{temp}" }
   end
 
@@ -50,7 +50,7 @@ class WeatherForecast
 
   def raw_response
     #16 day forecast seems to now require a paid account; this is for 5 day / 3 hour, which works free of charge
-    @results = HTTParty.get("#{BASE_URI}data/2.5/forecast?id=#{@location}&units=imperial&cnt=#{@number_of_days}&APPID=#{API_KEY}")
+    @results = HTTParty.get("#{BASE_URI}data/2.5/forecast?id=#{location}&units=imperial&cnt=#{number_of_days}&APPID=#{API_KEY}")
     save_results(results)
   end
 

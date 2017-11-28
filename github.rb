@@ -37,11 +37,10 @@ class GithubAPIWrapper
   def last_ten_commits_for_last_ten_repos
     commit_list = Hash.new(0)
     last_ten_repos.each do |repo|
-      commit_list["#{repo['name']}"] = []
+      commit_list[repo['name']] = []
       last_ten_commits = grab_commits(repo['name'])[0..9].map { |commit| commit['commit']['message'] }
       last_ten_commits.each do |commit|
-        commit_list["#{repo['name']}"] << commit 
-        binding.pry
+        commit_list[repo['name']}] << commit 
       end
       sleep(1)
     end
@@ -60,10 +59,5 @@ class GithubAPIWrapper
     end
   end
 end
-
-pp GithubAPIWrapper.new.last_ten_commits_for_last_ten_repos
-
-#repos = g.grab_repo_list
-#g.save_repos(repos)
 
 
